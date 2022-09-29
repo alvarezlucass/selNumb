@@ -1,20 +1,64 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, SafeAreaView, StyleSheet, View } from "react-native";
+import React, {useState} from "react";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import Colors from './constants/Colors';
+import GameOverScreen from './screens/GameOverScreen';
+import GameScreen from './screens/GameScreen';
+import Header from './Components/Header';
+import StartGameScreen from './screens/StarGameScreen';
+import { useFonts } from 'expo-font';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex: 1, 
+    backgroundColor: '#ffff',
   },
+  containerLoader:{
+    flex: 1,
+    justifyContent: 'center',
+    alignContent: 'center',
+    backgroundColor: '#ffff',
+  }
 });
+export default function App() {
+  const [ userNumber, setUserNumber] = useState(0);
+  const [ rounds, setRounds] = useState(0);
+  const [ loaded] = useFonts ({
+    'Play-Black' : require('./assets/fonts/PlayfairDisplay-Black.ttf'),
+    'Play-Bold' : require('./assets/fonts/PlayfairDisplay-Bold.ttf'),
+    'Play-Reg' : require('./assets/fonts/PlayfairDisplay-Regular.ttf'),
+  });
+const title = !userNumber ? 'Adivina el Número' : 'Comienza el Juego';
+
+const onStartGame = (selectNumber) => {
+  setUserNumber(selectNumber);
+}
+const onGameOver = (roundsNumber) => {
+  setRounds(roundsNumber);
+}
+const onRestartGame = () => {
+  setUserNumber(0);
+  setRounds(0);
+}
+if (!loaded) {
+  return (
+    <View style= { styles.containerLoader}>
+      <ActivityIndicator size= 'large' color= {Colors.primary} />
+    </View>
+  )
+}
+  let content = <StartGameScreen onStartGame={onStartGame} />
+
+  if ( userNumber && rounds <=0) {
+    content = <GameScreen selectNumber={userNumber} onGameOver={onGameOver} />
+  } else if(rounds > 0) {
+    content = <GameOverScreen roundsNumber={rounds} userNumber={userNumber} onReseart={onRestartGame} />
+  }
+  return(
+    <SafeAreaView style={ styles.container}>
+      <Header title={rounds > 0 ? 'Game Over' : title } />
+      {content}
+    </SafeAreaView>
+
+  )
+}
