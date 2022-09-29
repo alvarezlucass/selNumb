@@ -1,10 +1,10 @@
-import { Button, Dimensions, Keyboard, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TouchableHighlightBase, TouchableWithoutFeedback, View } from 'react-native';
+import { Button, Dimensions, Keyboard, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
 import React, { useState } from 'react';
 
-import Card from '../Components/Card';
+import Card from '../components/Card';
 import Colors from '../constants/Colors';
-import Input from '../Components/Input';
-import NumberContainer from '../Components/NumberContainer';
+import Input from '../components/Input';
+import NumberContainer from '../components/NumberContainer';
 
 const { height, width} = Dimensions.get('window');
 
@@ -79,7 +79,7 @@ const StarGameScreen = (onStartGame) => {
     }
     const onReset = () => {
         setNumber('');
-        setSelectedNumber(false);
+        setSelectedNumber(0);
         setConfirmed(false);
         Keyboard.dismiss()
     }
@@ -99,7 +99,7 @@ const StarGameScreen = (onStartGame) => {
     const confirmedOutPut = () => confirmed && (
         <Card style={styles.summaryContainer}>
             <Text style= {styles.summaryText}>Tu elección</Text>
-            <NumberContainer>{ selectedNumber}</NumberContainer>
+            <NumberContainer>{selectedNumber}</NumberContainer>
             <Button
                 title='Iniciar'
                 onPress={onHandStartGame}
@@ -120,7 +120,7 @@ const StarGameScreen = (onStartGame) => {
                         style= { styles.input}
                         keyboardType= 'numeric'
                         maxLength={2}
-                        blurlOnSubmit
+                        blurOnSubmit
                         autoCapitalize = 'none'
                         autoCorrect= {false}
                         onChanceText= {(text) => onHandleChange(text)}

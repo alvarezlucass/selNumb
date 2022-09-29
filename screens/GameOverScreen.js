@@ -1,7 +1,7 @@
 import { Button, Dimensions, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
-import Card from '../Components/Card';
+import Card from '../components/Card';
 import Colors from '../constants/Colors';
 
 const { width, height } = Dimensions.get('window');
@@ -60,7 +60,7 @@ const GameOverScreen = ({ roundsNumber, userNumber, onRestart }) => {
         <Card style= {isPortRait ? styles.resultContainer : styles.resultContainerLandscape}>
         <Image source = {{uri: 'https://media.istockphoto.com/vectors/game-over-comic-speech-bubble-style-vector-illustrationjpg-vector-id1169155347?s=612x612' }} style={styles.image} />
         <View>
-            <Text style= { styles.textResult}>Intentos: {roundsNumber}</Text>
+            <Text style= {styles.textResult}>Intentos: {roundsNumber}</Text>
             <Text style= {styles.textResult}>El número era: {userNumber}</Text>
             <Button 
                 title='Reiniciar'

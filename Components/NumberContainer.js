@@ -9,6 +9,7 @@ const styles= StyleSheet.create({
         borderColor: Colors.primary,
         padding: 10,
         borderRadius: 10, 
+        marginVertical: 10,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -26,4 +27,4 @@ const NumberContainer = ({children}) => {
   );
 }
 
-export default NumberContainer
+export default NumberContainer;

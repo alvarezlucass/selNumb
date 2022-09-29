@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         borderBottonColor: Colors.primary,
         borderBottonWidth: 1,
         marginVertical: 20,
-        ontFamily: 'bold',
+        ontFamily: 'Play-Reg',
     }
 })
 const Input = ({style, ...props}) => {

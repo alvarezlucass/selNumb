@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import Colors from './constants/Colors';
 import GameOverScreen from './screens/GameOverScreen';
 import GameScreen from './screens/GameScreen';
-import Header from './Components/Header';
+import Header from './components/Header';
 import StartGameScreen from './screens/StarGameScreen';
 import { useFonts } from 'expo-font';
 
@@ -52,7 +52,7 @@ if (!loaded) {
   if ( userNumber && rounds <=0) {
     content = <GameScreen selectNumber={userNumber} onGameOver={onGameOver} />
   } else if(rounds > 0) {
-    content = <GameOverScreen roundsNumber={rounds} userNumber={userNumber} onReseart={onRestartGame} />
+    content = <GameOverScreen roundsNumber={rounds} userNumber={userNumber} onRestart={onRestartGame} />
   }
   return(
     <SafeAreaView style={ styles.container}>
@@ -60,5 +60,5 @@ if (!loaded) {
       {content}
     </SafeAreaView>
 
-  )
+  );
 }

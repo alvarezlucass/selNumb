@@ -13,7 +13,7 @@ const styles= StyleSheet.create({
     title: {
         fontSize: 20,
         color: Colors.white,
-        fontFamily: 'bold'
+        fontFamily: 'Play-Bold'
     }
 });
 const Header = ({ title}) =>{

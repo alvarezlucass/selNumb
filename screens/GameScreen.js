@@ -1,9 +1,9 @@
 import { Alert, Button, Dimensions, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useRef, useState } from 'react';
 
-import Card from '../Components/Card';
+import Card from '../components/Card';
 import Colors from '../constants/Colors';
-import NumberContainer from '../Components/NumberContainer';
+import NumberContainer from '../components/NumberContainer';
 import { generateRAndomNumberBetween } from '../utils/generateRAndomNumberBetween';
 
 const { height, width } = Dimensions.get('window');
@@ -75,7 +75,7 @@ const GameScreen =({selectedNumber, onGameOver}) => {
                 <Button 
                     title='Subir'
                     onPress={()=> onHandNextGuess('greater')}
-                    color= {Colors.secundary}
+                    color= {Colors.secondary}
                 />
             </View>
         </Card>
